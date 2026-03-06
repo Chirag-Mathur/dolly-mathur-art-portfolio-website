@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Royal Painter Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="ornament-bg" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <button class="icon-btn" id="hallToggle" aria-label="Open hall of fame">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="3" width="7" height="7" rx="1.4"></rect>
+        <rect x="14" y="3" width="7" height="7" rx="1.4"></rect>
+        <rect x="3" y="14" width="7" height="7" rx="1.4"></rect>
+        <rect x="14" y="14" width="7" height="7" rx="1.4"></rect>
+      </svg>
+    </button>
+  </header>
+
+  <main class="book-shell">
+    <section class="book" id="book"></section>
+  </main>
+
+  <button class="nav-arrow nav-left" id="prevBtn" type="button" aria-label="Previous page">&#10094;</button>
+  <button class="nav-arrow nav-right" id="nextBtn" type="button" aria-label="Next page">&#10095;</button>
+
+  <div class="page-indicator" id="pageLabel">1 / 1</div>
+
+  <section class="painting-modal" id="paintingModal" aria-hidden="true">
+    <div class="painting-modal-card">
+      <button class="icon-btn modal-close" id="modalClose" aria-label="Close painting view">&times;</button>
+      <div class="modal-toolbar">
+        <button type="button" class="zoom-btn" id="modalZoomOut">-</button>
+        <button type="button" class="zoom-btn" id="modalZoomReset">100%</button>
+        <button type="button" class="zoom-btn" id="modalZoomIn">+</button>
+      </div>
+      <div class="modal-image-stage" id="modalImageStage">
+        <img id="modalImage" class="modal-image" alt="Painting enlarged view" />
+      </div>
+      <p class="modal-caption" id="modalCaption"></p>
+    </div>
+  </section>
+
+  <section class="hall-overlay" id="hallOverlay" aria-hidden="true">
+    <div class="hall-card">
+      <div class="hall-head">
+        <h2>Hall Of Fame</h2>
+        <button class="icon-btn" id="hallClose" aria-label="Close hall of fame">&times;</button>
+      </div>
+      <div class="hall-grid" id="hallGrid"></div>
+    </div>
+  </section>
+
+  <template id="contactPageTemplate">
+    <article class="page page-contact">
+      <div class="contact-layout">
+        <section class="contact-left">
+          <p class="ghost-name">Dolly</p>
+          <p class="chapter">Page 1</p>
+          <h1 class="artist-name">Hi! I'm Dolly Mathur</h1>
+          <p class="artist-role">Contemporary Painter</p>
+          <p class="contact-intro">I build story-driven canvases with vibrant textures, expressive color, and gallery-ready originals.</p>
+          <div class="contact-lines">
+            <p><strong>Email:</strong> dollymathurindia@gmail.com</p>
+            <p><strong>Phone:</strong> +91 8171961866</p>
+            <p><strong>Studio:</strong> Agra, India</p>
+          </div>
+          <div class="cta-row">
+            <a class="cta-btn cta-primary" href="#">View Portfolio</a>
+            <a class="cta-btn cta-dark" href="mailto:dollymathurindia@gmail.com">Hire Me</a>
+          </div>
+          <div class="mini-cards">
+            <article class="mini-card">
+              <h3>Original Paintings</h3>
+              <p>Hand-painted premium artworks.</p>
+            </article>
+            <article class="mini-card">
+              <h3>Custom Commissions</h3>
+              <p>Personalized paintings for your space.</p>
+            </article>
+            <article class="mini-card">
+              <h3>Exhibitions</h3>
+              <p>Available for gallery collaborations.</p>
+            </article>
+          </div>
+        </section>
+        <section class="contact-right">
+          <div class="photo-blob" aria-hidden="true"></div>
+          <img src="/images/artist/dolly_mathur_cleaned.png" alt="Artist portrait" class="artist-photo" />
+        </section>
+      </div>
+    </article>
+  </template>
+
+  <template id="paintingPageTemplate">
+    <article class="page page-painting">
+      <div class="museum-wall">
+        <figure class="royal-frame">
+          <img class="painting-image" alt="Painting" loading="lazy" />
+        </figure>
+        <section class="detail-box museum-board">
+          <p class="chapter"></p>
+          <h2 class="painting-title"></h2>
+          <p class="painting-description"></p>
+          <p class="painting-meta"></p>
+          <p class="painting-price"></p>
+        </section>
+      </div>
+    </article>
+  </template>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

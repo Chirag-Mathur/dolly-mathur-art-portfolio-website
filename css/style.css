@@ -1,0 +1,769 @@
+:root {
+  --bg-deep: #1a1024;
+  --bg-mid: #2b153d;
+  --gold: #dfbf74;
+  --gold-soft: #f2dfb0;
+  --cream: #f8f2e8;
+  --text-dark: #1d1428;
+  --wine: #5a1f3c;
+  --shadow: 0 26px 58px rgba(4, 2, 8, 0.55);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--cream);
+  background: radial-gradient(circle at 20% 20%, #3b1e53 0%, rgba(59, 30, 83, 0) 28%),
+    radial-gradient(circle at 80% 80%, #4e2037 0%, rgba(78, 32, 55, 0) 35%),
+    linear-gradient(140deg, var(--bg-deep) 0%, var(--bg-mid) 100%);
+  overflow: hidden;
+}
+
+.ornament-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(45deg, rgba(223, 191, 116, 0.08) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(223, 191, 116, 0.08) 25%, transparent 25%);
+  background-size: 60px 60px;
+}
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 1rem;
+  z-index: 20;
+}
+
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(223, 191, 116, 0.55);
+  background: rgba(36, 16, 52, 0.75);
+  color: var(--gold-soft);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: transform 280ms ease, background 280ms ease;
+}
+
+.icon-btn:hover {
+  transform: scale(1.04);
+  background: rgba(65, 27, 94, 0.9);
+}
+
+.icon-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.book-shell {
+  height: 100vh;
+  padding: 68px 1rem 1rem;
+}
+
+.book {
+  width: min(1420px, 96vw);
+  height: calc(100vh - 86px);
+  margin: 0 auto;
+  position: relative;
+  perspective: 2200px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(223, 191, 116, 0.25);
+  box-shadow: var(--shadow);
+  background: #130c1c;
+}
+
+.page {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.page.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.page.flip-in-forward {
+  animation: flipInForward 780ms cubic-bezier(0.2, 0.7, 0.1, 1) both;
+}
+
+.page.flip-out-forward {
+  animation: flipOutForward 780ms cubic-bezier(0.2, 0.7, 0.1, 1) both;
+}
+
+.page.flip-in-backward {
+  animation: flipInBackward 780ms cubic-bezier(0.2, 0.7, 0.1, 1) both;
+}
+
+.page.flip-out-backward {
+  animation: flipOutBackward 780ms cubic-bezier(0.2, 0.7, 0.1, 1) both;
+}
+
+.page-contact {
+  display: block;
+  background: #f7f7f7;
+}
+
+.contact-layout {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+}
+
+.contact-left {
+  padding: clamp(1rem, 2.7vw, 2.2rem) clamp(1rem, 3vw, 2.4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: #f7f7f7;
+  color: #141414;
+  border-right: 1px solid #ececec;
+  position: relative;
+}
+
+.contact-right {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.chapter {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.73rem;
+  color: #888;
+}
+
+.artist-name,
+.detail-box h2,
+.hall-head h2 {
+  margin: 0.1rem 0 0.3rem;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.artist-name {
+  font-size: clamp(2rem, 5.3vw, 4.4rem);
+  line-height: 0.96;
+  max-width: 14ch;
+  color: #121212;
+}
+
+.artist-role {
+  margin: 0;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.2rem, 2vw, 2rem);
+  font-weight: 700;
+  color: #d4a42f;
+}
+
+.ghost-name {
+  position: absolute;
+  top: clamp(0.5rem, 2vw, 1.2rem);
+  left: clamp(1rem, 2.8vw, 2.4rem);
+  margin: 0;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2rem, 6vw, 4.8rem);
+  line-height: 1;
+  color: rgba(20, 20, 20, 0.05);
+  pointer-events: none;
+}
+
+.contact-intro {
+  margin: 0.8rem 0 0.6rem;
+  color: #555;
+  max-width: 56ch;
+  font-size: clamp(0.88rem, 1.3vw, 1rem);
+}
+
+.artist-photo {
+  width: min(540px, 92%);
+  height: calc(100% - 2rem);
+  object-fit: contain;
+  display: block;
+  border-radius: 0 0 0 0;
+  border: 0;
+  box-shadow: none;
+  position: relative;
+  z-index: 1;
+}
+
+.photo-blob {
+  position: absolute;
+  width: 92%;
+  height: 92%;
+  right: 3%;
+  top: 4%;
+  background: #f4b92f;
+  border-radius: 44% 56% 58% 42% / 42% 40% 60% 58%;
+  z-index: 0;
+}
+
+.contact-lines {
+  margin-top: 0.2rem;
+  display: grid;
+  gap: 0.18rem;
+}
+
+.contact-lines p {
+  margin: 0;
+  font-size: clamp(0.77rem, 1.2vw, 0.9rem);
+  letter-spacing: 0.02em;
+  color: #1d1d1d;
+}
+
+.cta-row {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 0.55rem;
+}
+
+.cta-btn {
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid transparent;
+}
+
+.cta-primary {
+  background: #e3b440;
+  color: #111;
+}
+
+.cta-dark {
+  background: #131313;
+  color: #fff;
+}
+
+.mini-cards {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.mini-card {
+  background: #ffffff;
+  border: 1px solid #ececec;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+  padding: 0.6rem;
+}
+
+.mini-card h3 {
+  margin: 0 0 0.25rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  color: #181818;
+}
+
+.mini-card p {
+  margin: 0;
+  font-size: 0.66rem;
+  color: #5f5f5f;
+}
+
+.page-painting {
+  background:
+    radial-gradient(circle at 14% 18%, rgba(255, 241, 186, 0.34), transparent 35%),
+    radial-gradient(circle at 84% 82%, rgba(255, 208, 92, 0.26), transparent 40%),
+    linear-gradient(165deg, #b9852d 0%, #d6aa4f 42%, #a56f20 100%);
+}
+
+.museum-wall {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 80%) minmax(240px, 1fr);
+  align-items: center;
+  gap: clamp(0.8rem, 2vw, 1.4rem);
+  padding: 1rem clamp(1.3rem, 4.8vw, 3.4rem) 1rem 1rem;
+  overflow: hidden;
+}
+
+.museum-wall::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(255, 250, 222, 0.5) 1px, transparent 1.8px) 0 0 / 28px 28px,
+    radial-gradient(circle at 85% 85%, rgba(176, 118, 27, 0.35) 1px, transparent 1.8px) 14px 14px / 28px 28px,
+    repeating-linear-gradient(
+      45deg,
+      rgba(158, 104, 23, 0.08) 0,
+      rgba(158, 104, 23, 0.08) 7px,
+      rgba(238, 201, 119, 0.08) 7px,
+      rgba(238, 201, 119, 0.08) 14px
+    );
+  mix-blend-mode: multiply;
+  opacity: 0.62;
+  pointer-events: none;
+}
+
+.royal-frame {
+  --art-ratio: 1.33;
+  margin: 0;
+  position: relative;
+  width: min(100%, calc((100vh - 170px) * var(--art-ratio)));
+  max-width: 100%;
+  max-height: calc(100vh - 170px);
+  aspect-ratio: var(--art-ratio);
+  border: 18px solid #6c4a14;
+  box-shadow:
+    inset 0 0 0 2px #f6e0a7,
+    inset 0 0 0 7px #b9872f,
+    inset 0 0 0 12px #f2cf82,
+    inset 0 0 0 18px #a67126,
+    0 24px 38px rgba(0, 0, 0, 0.48);
+  background: #f6e7c7;
+  padding: 0.7rem;
+  z-index: 2;
+  justify-self: center;
+  align-self: center;
+}
+
+.royal-frame::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border: 5px solid rgba(232, 192, 104, 0.78);
+  pointer-events: none;
+}
+
+.painting-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  cursor: pointer;
+  background: transparent;
+  filter: saturate(1.06) contrast(1.05);
+  clip-path: inset(2px);
+}
+
+.detail-box {
+  position: absolute;
+  right: clamp(0.7rem, 2vw, 1.2rem);
+  bottom: clamp(0.7rem, 2vw, 1.2rem);
+  width: min(360px, 82vw);
+  background: linear-gradient(145deg, rgba(255, 245, 225, 0.93), rgba(246, 229, 198, 0.92));
+  color: var(--text-dark);
+  border: 1px solid rgba(120, 86, 30, 0.35);
+  border-radius: 14px;
+  padding: 0.8rem 0.9rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.museum-board {
+  width: min(100%, 360px);
+  background: linear-gradient(145deg, #f9efd8, #ecd9b0);
+  border: 2px solid #916d34;
+  border-radius: 4px;
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 246, 224, 0.7),
+    0 12px 28px rgba(0, 0, 0, 0.45);
+  position: relative;
+  right: auto;
+  left: auto;
+  bottom: auto;
+  justify-self: stretch;
+  align-self: center;
+}
+
+.museum-board::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(108, 81, 43, 0.35);
+  pointer-events: none;
+}
+
+.detail-box.hidden {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+
+.detail-box p {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.painting-meta {
+  color: #5b503e;
+}
+
+.painting-price {
+  font-weight: 700;
+  color: #4d1b35;
+}
+
+.painting-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 42;
+  display: none;
+  background: rgba(8, 4, 13, 0.86);
+  backdrop-filter: blur(8px);
+  padding: min(5vh, 32px) 1rem;
+}
+
+.painting-modal.open {
+  display: block;
+}
+
+.painting-modal-card {
+  position: relative;
+  width: min(1200px, 96vw);
+  height: 100%;
+  margin: 0 auto;
+  border: 1px solid rgba(230, 195, 116, 0.58);
+  border-radius: 14px;
+  background: linear-gradient(160deg, #2d1436, #1a1027);
+  padding: 0.85rem;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 0.6rem;
+}
+
+.modal-close {
+  position: absolute;
+  right: 0.8rem;
+  top: 0.8rem;
+}
+
+.modal-toolbar {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.zoom-btn {
+  border: 1px solid rgba(230, 195, 116, 0.6);
+  background: rgba(0, 0, 0, 0.25);
+  color: #f5dca7;
+  font-family: 'Cinzel', serif;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+}
+
+.modal-image-stage {
+  border: 12px solid #6f4b17;
+  box-shadow:
+    inset 0 0 0 2px #f2d394,
+    inset 0 0 0 7px #a37328;
+  background: #0b0710;
+  overflow: hidden;
+  position: relative;
+}
+
+.modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  touch-action: none;
+  transform-origin: center center;
+  will-change: transform;
+  clip-path: inset(2px);
+}
+
+.modal-caption {
+  margin: 0;
+  text-align: center;
+  color: #f1d89e;
+  font-family: 'Cinzel', serif;
+}
+
+.nav-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(223, 191, 116, 0.55);
+  background: rgba(18, 10, 28, 0.72);
+  color: var(--gold-soft);
+  font-size: 1.45rem;
+  cursor: pointer;
+  z-index: 25;
+}
+
+.nav-left {
+  left: 10px;
+}
+
+.nav-right {
+  right: 10px;
+}
+
+.nav-arrow:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.page-indicator {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  color: var(--gold-soft);
+  background: rgba(15, 9, 22, 0.65);
+  border: 1px solid rgba(223, 191, 116, 0.4);
+  border-radius: 999px;
+  padding: 0.32rem 0.74rem;
+  z-index: 20;
+}
+
+.hall-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: none;
+  padding: min(5vh, 40px) 1rem;
+  background: rgba(31, 18, 4, 0.62);
+  backdrop-filter: blur(6px);
+}
+
+.hall-overlay.open {
+  display: block;
+}
+
+.hall-card {
+  width: min(1200px, 96vw);
+  height: 100%;
+  margin: 0 auto;
+  border: 1px solid rgba(166, 114, 28, 0.52);
+  background:
+    radial-gradient(circle at 10% 12%, rgba(255, 241, 186, 0.28), transparent 35%),
+    radial-gradient(circle at 84% 82%, rgba(255, 208, 92, 0.18), transparent 38%),
+    linear-gradient(165deg, #b9852d 0%, #d6aa4f 42%, #a56f20 100%);
+  border-radius: 16px;
+  padding: 0.8rem;
+  overflow: auto;
+  position: relative;
+}
+
+.hall-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(255, 250, 222, 0.48) 1px, transparent 1.8px) 0 0 / 28px 28px,
+    radial-gradient(circle at 85% 85%, rgba(176, 118, 27, 0.33) 1px, transparent 1.8px) 14px 14px / 28px 28px,
+    repeating-linear-gradient(
+      45deg,
+      rgba(158, 104, 23, 0.08) 0,
+      rgba(158, 104, 23, 0.08) 7px,
+      rgba(238, 201, 119, 0.08) 7px,
+      rgba(238, 201, 119, 0.08) 14px
+    );
+  mix-blend-mode: multiply;
+  opacity: 0.58;
+  pointer-events: none;
+}
+
+.hall-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hall-head h2 {
+  color: #4b2e00;
+}
+
+.hall-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hall-thumb {
+  border: none;
+  background: transparent;
+  color: #3f2800;
+  text-align: left;
+  cursor: pointer;
+}
+
+.hall-frame {
+  --thumb-ratio: 1.33;
+  border: 14px solid #6c4a14;
+  box-shadow:
+    inset 0 0 0 2px #f6e0a7,
+    inset 0 0 0 6px #b9872f,
+    inset 0 0 0 10px #f2cf82,
+    inset 0 0 0 14px #a67126,
+    0 12px 26px rgba(0, 0, 0, 0.35);
+  background: #f6e7c7;
+  padding: 0.5rem;
+  position: relative;
+  aspect-ratio: var(--thumb-ratio);
+}
+
+.hall-frame::before {
+  content: "";
+  position: absolute;
+  inset: -9px;
+  border: 4px solid rgba(232, 192, 104, 0.78);
+  pointer-events: none;
+}
+
+.hall-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  clip-path: inset(2px);
+}
+
+.hall-thumb span {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: 1rem;
+  color: #4b2e00;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.02em;
+}
+
+@keyframes flipInForward {
+  from {
+    opacity: 0;
+    transform: rotateY(-94deg) translateX(14%);
+  }
+  to {
+    opacity: 1;
+    transform: rotateY(0deg) translateX(0);
+  }
+}
+
+@keyframes flipOutForward {
+  from {
+    opacity: 1;
+    transform: rotateY(0deg) translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: rotateY(92deg) translateX(-15%);
+  }
+}
+
+@keyframes flipInBackward {
+  from {
+    opacity: 0;
+    transform: rotateY(94deg) translateX(-14%);
+  }
+  to {
+    opacity: 1;
+    transform: rotateY(0deg) translateX(0);
+  }
+}
+
+@keyframes flipOutBackward {
+  from {
+    opacity: 1;
+    transform: rotateY(0deg) translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: rotateY(-92deg) translateX(15%);
+  }
+}
+
+@media (max-width: 760px) {
+  .book {
+    width: 100%;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-right {
+    display: grid;
+    height: 40vh;
+  }
+
+  .artist-photo {
+    height: 95%;
+    width: min(360px, 92%);
+  }
+
+  .mini-cards {
+    grid-template-columns: 1fr;
+    margin-top: 0.9rem;
+  }
+
+  .nav-arrow {
+    width: 46px;
+    height: 46px;
+  }
+
+  .hall-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .hall-frame img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .museum-wall {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    padding: 0.9rem;
+  }
+
+  .royal-frame {
+    width: min(94vw, calc((100vh - 250px) * var(--art-ratio)));
+    max-height: calc(100vh - 280px);
+  }
+
+  .museum-board {
+    width: 100%;
+  }
+}

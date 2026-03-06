@@ -1,0 +1,9 @@
+{
+  "name": "painter-showcase",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Colorful animated painter portfolio website",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
