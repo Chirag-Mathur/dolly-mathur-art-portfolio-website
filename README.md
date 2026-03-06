@@ -17,6 +17,12 @@ Open `http://localhost:3000`.
 - Supported: `.png`, `.jpg`, `.jpeg`, `.webp`, `.svg`, `.gif`.
 - The gallery automatically reads all files in that folder via `/api/paintings`.
 
+## Netlify / Static Hosting
+
+- Static hosting platforms (like Netlify) do not run the local Node API route (`/api/paintings`).
+- For static deploys, the app falls back to `/data/paintings-static.json`.
+- Update that file when you add/remove paintings for Netlify builds.
+
 ## Configure each painting (JSON)
 
 Edit `/data/paintings-meta.json`.

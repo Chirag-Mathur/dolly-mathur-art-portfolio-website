@@ -360,13 +360,25 @@ function renderBook(paintings) {
 }
 
 async function fetchPaintings() {
-  const response = await fetch('/api/paintings', { cache: 'no-store' });
-  if (!response.ok) {
+  try {
+    const response = await fetch('/api/paintings', { cache: 'no-store' });
+    if (response.ok) {
+      const data = await response.json();
+      if (Array.isArray(data.paintings) && data.paintings.length) {
+        return data.paintings;
+      }
+    }
+  } catch {
+    // Static hosts like Netlify do not run the local Node API.
+  }
+
+  const fallbackResponse = await fetch('/data/paintings-static.json', { cache: 'no-store' });
+  if (!fallbackResponse.ok) {
     throw new Error('Unable to load paintings');
   }
 
-  const data = await response.json();
-  return Array.isArray(data.paintings) ? data.paintings : [];
+  const fallbackData = await fallbackResponse.json();
+  return Array.isArray(fallbackData.paintings) ? fallbackData.paintings : [];
 }
 
 function bindNavigation() {

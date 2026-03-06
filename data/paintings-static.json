@@ -1,0 +1,94 @@
+{
+  "paintings": [
+    {
+      "id": 1,
+      "filename": "ap9.jpeg",
+      "image": "/images/paintings/ap9.jpeg",
+      "title": "Songs of the Orchha Ghats",
+      "description": "Orchha’s ghats captured as a living song of faith, heritage, and the enduring spirit of Indian culture.",
+      "price": null,
+      "medium": "Acrylic on canvas",
+      "year": "2024"
+    },
+    {
+      "id": 2,
+      "filename": "p1.jpeg",
+      "image": "/images/paintings/p1.jpeg",
+      "title": "Symphony of Bloom",
+      "description": "Layers of red and pink flowers unfold like musical notes, capturing the rhythm and elegance of blooming nature in a moment of delicate balance.",
+      "price": null,
+      "medium": "Acrylic on canvas",
+      "year": "2024"
+    },
+    {
+      "id": 3,
+      "filename": "p2.jpg",
+      "image": "/images/paintings/p2.jpg",
+      "title": "Voyage at Dusk",
+      "description": "As the sun sinks into the horizon, a small raft carries its passengers through a tranquil river landscape. The vibrant sky and shimmering reflections create a poetic scene of journey, freedom, and quiet companionship.",
+      "price": null,
+      "medium": "Acrylic on canvas",
+      "year": "2024"
+    },
+    {
+      "id": 4,
+      "filename": "p3.jpg",
+      "image": "/images/paintings/p3.jpg",
+      "title": "Whispers of Spring",
+      "description": "A delicate bird rests among blooming blossoms, surrounded by soft colors and gentle light. The painting captures the quiet harmony of nature, where new life, beauty, and serenity unfold in the calm embrace of spring",
+      "price": null,
+      "medium": "Acrylic on canvas",
+      "year": "2024"
+    },
+    {
+      "id": 5,
+      "filename": "p4.jpg",
+      "image": "/images/paintings/p4.jpg",
+      "title": "Guardians of the Nest",
+      "description": "Two vigilant woodpeckers stand watch over their tree hollow, where new life waits within. Surrounded by vibrant leaves and textured bark, the scene celebrates nature’s quiet devotion—parents protecting their home and nurturing the fragile beginnings of life.",
+      "price": null,
+      "medium": "Acrylic on canvas",
+      "year": "2024"
+    },
+    {
+      "id": 6,
+      "filename": "p5.jpg",
+      "image": "/images/paintings/p5.jpg",
+      "title": "Harmony in Bloom",
+      "description": "A rich bouquet of diverse blossoms rises gracefully from a glass vase, each flower contributing its own color, form, and character. The composition celebrates the harmony of nature’s variety—where different blooms unite to create a vibrant symphony of beauty, life, and balance.",
+      "price": null,
+      "medium": "Acrylic on canvas",
+      "year": "2024"
+    },
+    {
+      "id": 7,
+      "filename": "p6.jpg",
+      "image": "/images/paintings/p6.jpg",
+      "title": "Sai Baba’s Sacred Kitchen",
+      "description": "Depicting Sai Baba of Shirdi preparing food in a large vessel, the painting reflects his spirit of compassion, humility, and service. Through the simple act of cooking for devotees, Sai Baba symbolizes equality, kindness, and the divine message of feeding and caring for all.",
+      "price": null,
+      "medium": "Acrylic on canvas",
+      "year": "2024"
+    },
+    {
+      "id": 8,
+      "filename": "p7.jpg",
+      "image": "/images/paintings/p7.jpg",
+      "title": "Little Gentleman",
+      "description": "A charming portrait of a fluffy pup dressed in a cozy blue sweater, capturing innocence, warmth, and playful personality. The expressive eyes and soft textures bring the little companion to life, celebrating the joy and affection that pets bring into our lives.",
+      "price": null,
+      "medium": "Acrylic on canvas",
+      "year": "2024"
+    },
+    {
+      "id": 9,
+      "filename": "p8.jpg",
+      "image": "/images/paintings/p8.jpg",
+      "title": "Desert Endurance",
+      "description": "In the vast stillness of the desert, a weary traveler kneels beside a small pool of water while his camels stand patiently behind him. The scene captures the harsh beauty of desert life—where resilience, survival, and the bond between human and animal become essential companions on the long journey across the sands.",
+      "price": null,
+      "medium": "Acrylic on canvas",
+      "year": "2024"
+    }
+  ]
+}
