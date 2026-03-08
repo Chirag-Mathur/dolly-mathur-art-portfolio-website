@@ -132,6 +132,7 @@ body {
   height: 100%;
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
+  grid-template-rows: 1fr auto;
 }
 
 .contact-left {
@@ -143,6 +144,8 @@ body {
   color: #141414;
   border-right: 1px solid #ececec;
   position: relative;
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .contact-right {
@@ -151,6 +154,8 @@ body {
   position: relative;
   display: grid;
   place-items: center;
+  grid-column: 2;
+  grid-row: 1 / span 2;
 }
 
 .chapter {
@@ -265,33 +270,6 @@ body {
 .cta-dark {
   background: #131313;
   color: #fff;
-}
-
-.mini-cards {
-  margin-top: auto;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.55rem;
-}
-
-.mini-card {
-  background: #ffffff;
-  border: 1px solid #ececec;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
-  padding: 0.6rem;
-}
-
-.mini-card h3 {
-  margin: 0 0 0.25rem;
-  font-family: 'Cinzel', serif;
-  font-size: 0.7rem;
-  color: #181818;
-}
-
-.mini-card p {
-  margin: 0;
-  font-size: 0.66rem;
-  color: #5f5f5f;
 }
 
 .page-painting {
@@ -722,21 +700,24 @@ body {
 
   .contact-layout {
     grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
   }
 
   .contact-right {
     display: grid;
-    height: 40vh;
+    height: 100%;
+    min-height: 0;
+    grid-column: 1;
+    grid-row: 2;
+    padding: 0.4rem 0.8rem 0;
+    align-items: end;
   }
 
   .artist-photo {
-    height: 95%;
-    width: min(360px, 92%);
-  }
-
-  .mini-cards {
-    grid-template-columns: 1fr;
-    margin-top: 0.9rem;
+    height: auto;
+    max-height: 34vh;
+    width: min(320px, 88%);
   }
 
   .nav-arrow {
@@ -765,5 +746,199 @@ body {
 
   .museum-board {
     width: 100%;
+  }
+}
+
+@media (max-width: 900px) and (orientation: portrait) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    align-content: start;
+    height: 100%;
+  }
+
+  .topbar {
+    height: 56px;
+    padding: 0 0.7rem;
+  }
+
+  .icon-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .book-shell {
+    padding: 60px 0.55rem 0.6rem;
+  }
+
+  .book {
+    width: 100%;
+    height: calc(100vh - 74px);
+    border-radius: 12px;
+  }
+
+  .page-indicator {
+    bottom: 8px;
+    font-size: 0.7rem;
+    padding: 0.24rem 0.56rem;
+  }
+
+  .nav-arrow {
+    width: 42px;
+    height: 42px;
+    font-size: 1.15rem;
+    top: calc(50% + 10px);
+  }
+
+  .nav-left {
+    left: 6px;
+  }
+
+  .nav-right {
+    right: 6px;
+  }
+
+  .contact-left {
+    padding: 0.9rem 0.8rem;
+  }
+
+  .artist-name {
+    font-size: clamp(1.6rem, 8vw, 2.5rem);
+  }
+
+  .artist-role {
+    font-size: clamp(1rem, 5.4vw, 1.3rem);
+  }
+
+  .contact-intro {
+    margin: 0.55rem 0 0.45rem;
+    font-size: 0.85rem;
+  }
+
+  .contact-right {
+    height: 100%;
+    min-height: 0;
+    grid-column: 1;
+    grid-row: 2;
+    padding: 0.3rem 0.7rem 0;
+    align-items: end;
+    justify-items: center;
+  }
+
+  .artist-photo {
+    height: auto;
+    max-height: 32vh;
+    width: min(320px, 86%);
+    position: relative;
+    z-index: 1;
+  }
+
+  .photo-blob {
+    width: min(360px, 92%);
+    aspect-ratio: 1.28 / 1;
+    height: auto;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    top: auto;
+    bottom: 0;
+    border-radius: 44% 56% 58% 42% / 42% 40% 60% 58%;
+  }
+
+  .museum-wall {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    gap: 0.6rem;
+    padding: 0.65rem;
+  }
+
+  .royal-frame {
+    width: min(96vw, calc((100vh - 280px) * var(--art-ratio)));
+    max-height: calc(100vh - 310px);
+    border-width: 12px;
+    padding: 0.45rem;
+  }
+
+  .royal-frame::before {
+    inset: -7px;
+    border-width: 3px;
+  }
+
+  .museum-board {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.55rem 0.62rem;
+  }
+
+  .detail-box p {
+    font-size: 0.88rem;
+    line-height: 1.26;
+    margin-bottom: 0.32rem;
+  }
+
+  .painting-modal {
+    padding: 0.5rem;
+  }
+
+  .painting-modal-card {
+    width: 100%;
+    border-radius: 10px;
+    padding: 0.55rem;
+    gap: 0.45rem;
+  }
+
+  .modal-image-stage {
+    border-width: 8px;
+  }
+
+  .zoom-btn {
+    padding: 0.3rem 0.55rem;
+    font-size: 0.75rem;
+  }
+
+  .hall-overlay {
+    padding: 0.5rem;
+  }
+
+  .hall-card {
+    width: 100%;
+    border-radius: 12px;
+    padding: 0.55rem;
+  }
+
+  .hall-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
+  }
+
+  .hall-frame {
+    border-width: 10px;
+    padding: 0.34rem;
+  }
+
+  .hall-frame::before {
+    inset: -6px;
+    border-width: 2px;
+  }
+
+  .hall-thumb span {
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+  }
+
+}
+
+@media (max-width: 460px) and (orientation: portrait) {
+  .ghost-name {
+    display: none;
+  }
+
+  .nav-arrow {
+    width: 38px;
+    height: 38px;
+  }
+
+  .page-indicator {
+    bottom: 6px;
   }
 }
